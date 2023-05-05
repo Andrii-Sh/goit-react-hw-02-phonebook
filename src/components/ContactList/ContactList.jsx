@@ -9,7 +9,7 @@ export const ContactList = ({ contacts }) => {
         const lisiItemtId = nanoid();
         return (
           <li key={lisiItemtId}>
-            <Contact name={contact.name} />
+            <Contact name={contact.name} number={contact.number} />
           </li>
         );
       })}

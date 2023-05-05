@@ -10,10 +10,11 @@ export class App extends Component {
     // name: '',
   };
 
-  addContact = ({ name }) => {
+  addContact = ({ name, number }) => {
     const contact = {
-      name,
       id: nanoid(),
+      name,
+      number,
     };
 
     this.setState(prevstate => ({
@@ -39,7 +40,6 @@ export class App extends Component {
         <h2>Contacts</h2>
         <Filter />
         <ContactList contacts={contacts} />
-        React homework template
       </div>
     );
   }
