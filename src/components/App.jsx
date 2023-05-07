@@ -38,16 +38,28 @@ export class App extends Component {
     }));
   };
 
+  getFiltredContacts = () => {
+    const normalizedFilter = this.state.filter.toLowerCase();
+
+    return this.state.contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
+
   handleFilterChange = evt => {
     this.setState({ filter: evt.currentTarget.value });
   };
 
+  handleDeleteContact = contactId => {
+    this.setState({
+      contacts: this.state.contacts.filter(item => item.id !== contactId),
+    });
+  };
+
   render() {
-    const { contacts, filter } = this.state;
-    const normalizedFilter = filter.toLowerCase();
-    const filtredContacts = contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter)
-    );
+    const { filter } = this.state;
+
+    const filtredContacts = this.getFiltredContacts();
 
     return (
       <div
@@ -64,28 +76,11 @@ export class App extends Component {
         <ContactForm onSubmit={this.addContact} />
         <h2>Contacts</h2>
         <Filter value={filter} onChange={this.handleFilterChange} />
-        <ContactList contacts={filtredContacts} />
+        <ContactList
+          contacts={filtredContacts}
+          onDeleteContact={this.handleDeleteContact}
+        />
       </div>
     );
   }
 }
-
-// handleChange = evt => {
-//   this.setState({ name: evt.target.value });
-// };
-
-// handleSubmit = evt => {
-//   evt.preventDefault();
-//   console.log(this.state.name);
-//   this.props.onSubmit({ ...this.state });
-//   addContact();
-//   this.reset();
-// };
-
-// reset = () => {
-//   this.setState({ name: '' });
-// };
-
-// name={name}
-// handleChange={this.handleChange}
-// handleSubmit={this.handleSubmit}
