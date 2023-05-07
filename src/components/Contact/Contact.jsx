@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { ContactInfo, DeleteButton } from './Contact.styled';
 
 export class Contact extends Component {
   handleDelBtnClick = () => {
@@ -11,12 +12,12 @@ export class Contact extends Component {
     const { name, number } = this.props;
     return (
       <>
-        <p>
+        <ContactInfo>
           {name}: {number}
-        </p>
-        <button type="submit" onClick={this.handleDelBtnClick}>
+        </ContactInfo>
+        <DeleteButton type="submit" onClick={this.handleDelBtnClick}>
           Delete
-        </button>
+        </DeleteButton>
       </>
     );
   }

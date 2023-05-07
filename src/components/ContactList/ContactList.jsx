@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 import { Contact } from '../Contact/Contact';
+import { ContactItem } from './ContactList.styled';
 
 export const ContactList = ({ contacts, onDeleteContact }) => {
   return (
@@ -8,14 +9,14 @@ export const ContactList = ({ contacts, onDeleteContact }) => {
       {contacts.map(contact => {
         const lisiItemtId = nanoid();
         return (
-          <li key={lisiItemtId}>
+          <ContactItem key={lisiItemtId}>
             <Contact
               id={contact.id}
               name={contact.name}
               number={contact.number}
               onDeleteContact={onDeleteContact}
             />
-          </li>
+          </ContactItem>
         );
       })}
     </ul>
