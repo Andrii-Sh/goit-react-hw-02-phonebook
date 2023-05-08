@@ -25,5 +25,7 @@ export class Contact extends Component {
 
 Contact.propTypes = {
   id: PropTypes.string.isRequired,
-  onDeleteContact: PropTypes.func,
+  onDeleteContact: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
 };
